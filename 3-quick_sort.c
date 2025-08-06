@@ -9,7 +9,6 @@
  *
  * Return: Index du pivot après partition
  */
-
 int lomuto_partition(int *array, int low, int high, size_t size)
 {
 	int pivot, i, j, temp;
@@ -32,10 +31,13 @@ int lomuto_partition(int *array, int low, int high, size_t size)
 		}
 	}
 
-	temp = array[i + 1];
-	array[i + 1] = array[high];
-	array[high] = temp;
-	print_array(array, size);
+	if (i + 1 != high)
+	{
+		temp = array[i + 1];
+		array[i + 1] = array[high];
+		array[high] = temp;
+		print_array(array, size);
+	}
 
 	return (i + 1);
 }
@@ -66,9 +68,8 @@ void quick_sort_recursive(int *array, int low, int high, size_t size)
  */
 void quick_sort(int *array, size_t size)
 {
-	if (array == NULL || size < 1)
+	if (array == NULL || size < 2)
 		return;
 
 	quick_sort_recursive(array, 0, size - 1, size);
 }
-
